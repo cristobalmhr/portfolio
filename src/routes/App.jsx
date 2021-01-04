@@ -1,7 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-export default function App() {
+import Home from '../containers/Home'
+import Portfolio from '../containers/Portfolio'
+import Resume from '../containers/Resume'
+import Contact from '../containers/Contact'
+import Project from '../containers/Project'
+
+function App() {
   return (
     <Router>
       <div>
@@ -50,22 +56,4 @@ export default function App() {
   )
 }
 
-function Home() {
-  return <h2>Home</h2>
-}
-
-function Portfolio() {
-  return <h2>Portfolio</h2>
-}
-
-function Project() {
-  return <h2>Project</h2>
-}
-
-function Resume() {
-  return <h2>Resume</h2>
-}
-
-function Contact() {
-  return <h2>Contact</h2>
-}
+export default App
