@@ -1,40 +1,10 @@
 import React from 'react'
-import { Toolbar, IconButton, Button, makeStyles } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Toolbar, IconButton } from '@material-ui/core'
 import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 
 import logo from '../resources/images/logo-lg.PNG'
 import MenuButton from './MenuButton'
-
-const useStyles = makeStyles(() => ({
-  menuButton: {
-    color: '#707070',
-    fontFamily: 'Calibri',
-    fontWeight: 500,
-    fontSize: '18px',
-    marginLeft: '15px',
-    padding: '5px 15px',
-  },
-  menuButtonSelected: {
-    color: '#5E7C51',
-    fontWeight: 700,
-    paddingBottom: '10px',
-    borderBottom: '2px solid red',
-  },
-  iconButton: {
-    marginLeft: '15px',
-  },
-
-  headerContainer: {
-    display: 'flex',
-    flex: '1',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  logoLarge: {
-    padding: '10px 0px',
-  },
-}))
+import '../styles/components/ToolbarDesktop.css'
 
 const menuPages = [
   {
@@ -60,20 +30,21 @@ const menuPages = [
 ]
 
 const ToolbarDesktop = () => {
-  const { headerContainer, iconButton, logoLarge } = useStyles()
-
   return (
     <Toolbar>
-      <div className={headerContainer}>
-        <img src={logo} alt="Logo" width={270} className={logoLarge} />
+      <div className="header-container">
+        <img src={logo} alt="Logo" width={270} className="logo-large" />
 
-        <div>
+        <div className="menu-container">
           {menuPages.map((item) => (
-            <MenuButton
-              name={item.name}
-              path={item.path}
-              active={item.active}
-            />
+            <div className="item-container" key={item.name}>
+              <MenuButton
+                name={item.name}
+                path={item.path}
+                active={item.active}
+              />
+              {item.active && <div className="selected-mark"></div>}
+            </div>
           ))}
 
           {/* <IconButton
@@ -92,7 +63,7 @@ const ToolbarDesktop = () => {
             color="primary"
             aria-label="menu"
             aria-haspopup="true"
-            className={iconButton}
+            className="icon-button"
             onClick={() => console.log('Change theme')}
           >
             <NightsStayOutlinedIcon />
