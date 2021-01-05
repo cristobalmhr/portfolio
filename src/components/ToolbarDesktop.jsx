@@ -4,15 +4,22 @@ import { Link } from 'react-router-dom'
 import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 
 import logo from '../resources/images/logo-lg.PNG'
+import MenuButton from './MenuButton'
 
 const useStyles = makeStyles(() => ({
   menuButton: {
     color: '#707070',
-    fontFamily: 'Calibri, Open Sans, sans-serif',
+    fontFamily: 'Calibri',
     fontWeight: 500,
     fontSize: '18px',
     marginLeft: '15px',
     padding: '5px 15px',
+  },
+  menuButtonSelected: {
+    color: '#5E7C51',
+    fontWeight: 700,
+    paddingBottom: '10px',
+    borderBottom: '2px solid red',
   },
   iconButton: {
     marginLeft: '15px',
@@ -29,8 +36,31 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
+const menuPages = [
+  {
+    name: 'Home',
+    path: '/home',
+    active: true,
+  },
+  {
+    name: 'Portfolio',
+    path: '/portfolio',
+    active: false,
+  },
+  {
+    name: 'Resume',
+    path: '/resume',
+    active: false,
+  },
+  {
+    name: 'Contact',
+    path: '/contact',
+    active: false,
+  },
+]
+
 const ToolbarDesktop = () => {
-  const { menuButton, headerContainer, iconButton, logoLarge } = useStyles()
+  const { headerContainer, iconButton, logoLarge } = useStyles()
 
   return (
     <Toolbar>
@@ -38,49 +68,13 @@ const ToolbarDesktop = () => {
         <img src={logo} alt="Logo" width={270} className={logoLarge} />
 
         <div>
-          <Button
-            key="Home"
-            color="inherit"
-            to="/home"
-            size="large"
-            component={Link}
-            className={menuButton}
-          >
-            Home
-          </Button>
-
-          <Button
-            key="Portfolio"
-            color="inherit"
-            to="/portfolio"
-            size="large"
-            component={Link}
-            className={menuButton}
-          >
-            Portfolio
-          </Button>
-
-          <Button
-            key="Resume"
-            color="inherit"
-            to="/resume"
-            size="large"
-            component={Link}
-            className={menuButton}
-          >
-            Resume
-          </Button>
-
-          <Button
-            key="Contact"
-            color="inherit"
-            to="/contact"
-            size="large"
-            component={Link}
-            className={menuButton}
-          >
-            Contact
-          </Button>
+          {menuPages.map((item) => (
+            <MenuButton
+              name={item.name}
+              path={item.path}
+              active={item.active}
+            />
+          ))}
 
           {/* <IconButton
               edge="start"
