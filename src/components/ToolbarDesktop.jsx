@@ -5,31 +5,32 @@ import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
 import logo from '../resources/images/logo-lg.PNG'
 import MenuButton from './MenuButton'
 import '../styles/components/ToolbarDesktop.css'
+import { connect } from 'react-redux'
 
-const menuPages = [
-  {
-    name: 'Home',
-    path: '/home',
-    active: true,
-  },
-  {
-    name: 'Portfolio',
-    path: '/portfolio',
-    active: false,
-  },
-  {
-    name: 'Resume',
-    path: '/resume',
-    active: false,
-  },
-  {
-    name: 'Contact',
-    path: '/contact',
-    active: false,
-  },
-]
+// const menuPages = [
+//   {
+//     name: 'Home',
+//     path: '/home',
+//     active: true,
+//   },
+//   {
+//     name: 'Portfolio',
+//     path: '/portfolio',
+//     active: false,
+//   },
+//   {
+//     name: 'Resume',
+//     path: '/resume',
+//     active: false,
+//   },
+//   {
+//     name: 'Contact',
+//     path: '/contact',
+//     active: false,
+//   },
+// ]
 
-const ToolbarDesktop = () => {
+const ToolbarDesktop = ({ menuPages }) => {
   return (
     <Toolbar>
       <div className="header-container">
@@ -74,4 +75,10 @@ const ToolbarDesktop = () => {
   )
 }
 
-export default ToolbarDesktop
+const mapStateToProps = (state) => {
+  return {
+    menuPages: state.menuPages,
+  }
+}
+
+export default connect(mapStateToProps)(ToolbarDesktop)
