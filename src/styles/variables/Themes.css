@@ -1,0 +1,15 @@
+html {
+  --primaryBackgroundColor: white;
+  --secondaryBackgroundColor: white;
+  --primaryTextColor: #5e7c51;
+  --secondaryTextColor: #707070;
+  --selectedTextColor: #5e7c51;
+}
+
+html.dark {
+  --primaryBackgroundColor: #444444;
+  --secondaryBackgroundColor: #535353;
+  --primaryTextColor: #f2f2f2;
+  --secondaryTextColor: #fff;
+  --selectedTextColor: #aae690;
+}

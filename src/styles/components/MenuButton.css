@@ -1,4 +1,7 @@
+@import '../variables/Themes.css';
+
 .menu-button {
+  color: var(--secondaryTextColor) !important;
   font-family: Calibri !important;
   font-size: 18px !important;
   margin-left: 8px !important;
@@ -7,5 +10,6 @@
 }
 
 .menu-button-active {
-  font-weight: 700 !important;
+  color: var(--selectedTextColor) !important;
+  font-weight: 600 !important;
 }

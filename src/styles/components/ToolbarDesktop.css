@@ -1,12 +1,19 @@
+@import '../variables/Themes.css';
+
+.toolbar {
+  background-color: var(--secondaryBackgroundColor);
+}
+
 .icon-button {
   margin-left: 15px !important;
 }
+
 .header-container {
   display: flex;
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primaryBackgroundColor);
+  background-color: var(--secondaryBackgroundColor);
 }
 
 .menu-container {
@@ -29,7 +36,7 @@
   height: 4px;
   border-radius: 4px;
   width: 80%;
-  background-color: #5e7c51;
+  background-color: var(--selectedTextColor);
   position: relative;
   top: 6px;
 }
