@@ -10,6 +10,6 @@ html.dark {
   --primaryBackgroundColor: #444444;
   --secondaryBackgroundColor: #535353;
   --primaryTextColor: #f2f2f2;
-  --secondaryTextColor: #fff;
+  --secondaryTextColor: white;
   --selectedTextColor: #aae690;
 }

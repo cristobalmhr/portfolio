@@ -1,0 +1,13 @@
+@import './variables/Themes.css';
+
+.toolbar {
+  background-color: var(--secondaryBackgroundColor);
+}
+
+.drawer {
+  color: var(--secondaryBackgroundColor);
+}
+
+body {
+  background-color: var(--primaryBackgroundColor);
+}

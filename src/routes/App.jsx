@@ -9,6 +9,8 @@ import Contact from '../containers/Contact'
 import Project from '../containers/Project'
 import Layout from '../components/Layout'
 
+import '../styles/GlobalStyles.css'
+
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import { Provider } from 'react-redux'
 
@@ -59,6 +61,11 @@ const reducer = (state = initialValue, action) => {
             active: action.payload === menu.name ? true : false,
           }
         }),
+      }
+    case 'IS_DARK_THEME':
+      return {
+        ...state,
+        isDarkTheme: action.payload,
       }
     default:
       return state

@@ -1,9 +1,5 @@
 @import '../variables/Themes.css';
 
-.toolbar {
-  background-color: var(--secondaryBackgroundColor);
-}
-
 .icon-button {
   margin-left: 15px !important;
 }

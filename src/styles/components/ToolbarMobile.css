@@ -1,0 +1,22 @@
+@import '../variables/Themes.css';
+
+.header-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-small {
+  padding: 10px 0px;
+}
+.menu-button-mobile {
+  color: var(--secondaryTextColor) !important;
+  font-family: Calibri !important;
+  font-weight: 600;
+  size: 24px;
+  margin-left: 15px;
+  padding: 5px 15px;
+}
+.icon-button-menu {
+  color: var(--primaryTextColor) !important;
+}

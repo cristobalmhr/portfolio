@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Toolbar,
   IconButton,
@@ -7,64 +8,51 @@ import {
   Button,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
-import { Link } from 'react-router-dom'
-import logo from '../resources/images/logo-sm.PNG'
 
-const useStyles = makeStyles(() => ({
-  iconButton: {
-    marginLeft: '15px',
-  },
-  headerContainer: {
-    display: 'flex',
-    flex: '1',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  logoLarge: {
-    padding: '10px 0px',
-  },
-  menuButton: {
-    color: '#707070',
-    fontFamily: 'Calibri, Open Sans, sans-serif',
-    fontWeight: 600,
-    size: '24px',
-    marginLeft: '15px',
-    padding: '5px 15px',
-  },
-}))
+import ThemeButton from './ThemeButton'
+import logoLight from '../resources/images/logo-sm.PNG'
+import logoDark from '../resources/images/logo-sm-d.png'
 
-const ToolbarMobile = () => {
+import '../styles/components/ToolbarMobile.css'
+import '../styles/GlobalStyles.css'
+import { connect } from 'react-redux'
+
+const ToolbarMobile = ({ isDarkTheme }) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const { headerContainer, iconButton, logoLarge, menuButton } = useStyles()
+  const useStyles = makeStyles({
+    paper: {
+      background: isDarkTheme ? '#535353' : 'white',
+      color: isDarkTheme ? '#white' : '#5e7c51',
+    },
+  })
+
+  const { paper } = useStyles()
 
   return (
-    <Toolbar>
-      <div className={headerContainer}>
+    <Toolbar className="toolbar">
+      <div className="header-container">
         <IconButton
           edge="start"
-          color="primary"
           aria-label="menu"
           aria-haspopup="true"
+          className="icon-button-menu"
           onClick={() => setDrawerOpen(true)}
         >
           <MenuIcon />
         </IconButton>
-        <img src={logo} alt="Logo" height={30} className={logoLarge} />
+        <img
+          src={isDarkTheme ? logoDark : logoLight}
+          alt="Logo"
+          height={30}
+          className="logo-small"
+        />
 
-        <IconButton
-          edge="start"
-          color="primary"
-          aria-label="menu"
-          aria-haspopup="true"
-          className={iconButton}
-          onClick={() => console.log('Change theme')}
-        >
-          <NightsStayOutlinedIcon />
-        </IconButton>
+        <ThemeButton />
+
         <Drawer
-          anchor="left"
+          classes={{ paper: paper }}
+          anchor="bottom"
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         >
@@ -74,7 +62,7 @@ const ToolbarMobile = () => {
             to="/home"
             size="large"
             component={Link}
-            className={menuButton}
+            className="menu-button-mobile"
             onClick={() => setDrawerOpen(false)}
           >
             Home
@@ -86,7 +74,7 @@ const ToolbarMobile = () => {
             to="/portfolio"
             size="large"
             component={Link}
-            className={menuButton}
+            className="menu-button-mobile"
             onClick={() => setDrawerOpen(false)}
           >
             Portfolio
@@ -98,7 +86,7 @@ const ToolbarMobile = () => {
             to="/resume"
             size="large"
             component={Link}
-            className={menuButton}
+            className="menu-button-mobile"
             onClick={() => setDrawerOpen(false)}
           >
             Resume
@@ -110,7 +98,7 @@ const ToolbarMobile = () => {
             to="/contact"
             size="large"
             component={Link}
-            className={menuButton}
+            className="menu-button-mobile"
             onClick={() => setDrawerOpen(false)}
           >
             Contact
@@ -121,4 +109,10 @@ const ToolbarMobile = () => {
   )
 }
 
-export default ToolbarMobile
+const mapStateToProps = (state) => {
+  return {
+    isDarkTheme: state.isDarkTheme,
+  }
+}
+
+export default connect(mapStateToProps)(ToolbarMobile)
